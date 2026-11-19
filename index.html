@@ -304,5 +304,60 @@ $('prev').onclick=()=>show(cur-1);
 $('next').onclick=()=>show(cur+1);
 show(0);
 </script>
+<style>
+#propose{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(circle at 30% 20%,#ffd6e7 0%,#ff9fc4 40%,#e0457b 100%);transition:opacity .8s}
+#propose.hide{opacity:0;pointer-events:none}
+#propose .float{position:absolute;bottom:-60px;font-size:28px;animation:rise linear infinite;opacity:.85;pointer-events:none}
+@keyframes rise{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+#propose .boxp{position:relative;z-index:2;text-align:center;background:rgba(255,255,255,.88);border-radius:22px;padding:34px 30px 30px;
+  max-width:380px;width:88%;box-shadow:0 20px 60px rgba(150,20,70,.35)}
+#propose .ring{font-size:84px;display:inline-block;animation:bob 1.6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.2))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+#propose h1{font-family:Georgia,serif;font-weight:normal;color:#b0144f;font-size:34px;margin:10px 0 6px}
+#propose p{color:#7a2a48;margin:0 0 20px}
+#propose .yn{display:flex;gap:12px;justify-content:center}
+#propose .yn button{font:inherit;font-size:18px;padding:11px 30px;border-radius:999px;cursor:pointer;border:none}
+#pyes{background:#e0457b;color:#fff;box-shadow:0 6px 16px rgba(224,69,123,.45)}
+#pno{background:#fff;color:#b0144f;border:2px solid #e0457b!important}
+#propose .yn button:hover{transform:scale(1.06)}
+#pmsg{font-size:22px;color:#b0144f;min-height:0}
+.conf{position:fixed;top:-20px;z-index:1000;pointer-events:none;font-size:22px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.sad{font-size:90px;display:inline-block;animation:droop 1.2s ease-in-out infinite}
+@keyframes droop{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(4px)}}
+</style>
+<div id="propose">
+  <div class="boxp" id="pbox">
+    <div class="ring">💍</div>
+    <h1>Will you marry me?</h1>
+    <p>💕 Before the assessment… 💕</p>
+    <div class="yn"><button id="pyes">Yes 💖</button><button id="pno">No</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  const P=document.getElementById('propose'),box=document.getElementById('pbox');
+  const em=['❤️','💖','💕','💗','💘','💝','🌹','✨','💍','🥰'];
+  for(let i=0;i<26;i++){const s=document.createElement('span');s.className='float';s.textContent=em[i%em.length];
+    s.style.left=Math.random()*100+'%';s.style.fontSize=(18+Math.random()*26)+'px';
+    s.style.animationDuration=(6+Math.random()*7)+'s';s.style.animationDelay=(-Math.random()*12)+'s';P.appendChild(s);}
+  function burst(){const c=['🎉','🎊','💖','❤️','✨','💍','🥳','🌹','💕'];
+    for(let i=0;i<90;i++){const s=document.createElement('span');s.className='conf';s.textContent=c[i%c.length];
+      s.style.left=Math.random()*100+'vw';s.style.fontSize=(16+Math.random()*22)+'px';
+      s.style.animationDuration=(2.2+Math.random()*2.5)+'s';s.style.animationDelay=(Math.random()*1.2)+'s';
+      document.body.appendChild(s);setTimeout(()=>s.remove(),6000);}}
+  function close(ms){setTimeout(()=>{P.classList.add('hide');setTimeout(()=>P.remove(),900);},ms);}
+  document.getElementById('pyes').onclick=()=>{
+    box.innerHTML='<div class="ring">💍</div><h1>She said YES! 🥳</h1><p id="pmsg">I love you ❤️<br>Now go ace that assessment! 💪</p>';
+    burst();setTimeout(burst,1200);close(4200);
+  };
+  document.getElementById('pno').onclick=()=>{
+    box.innerHTML='<div class="sad">😢</div><h1>Aww… okay</h1><p id="pmsg">My heart is broken 💔<br>…but let\'s still pass tomorrow.</p>';
+    close(3200);
+  };
+})();
+</script>
+
 </body>
 </html>
