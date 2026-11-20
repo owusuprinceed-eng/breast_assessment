@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fractures & Dislocations: PBL Assessment</title>
+<title>Benign Breast Diseases: PBL Assessment</title>
 <style>
 :root{--ink:#16202c;--muted:#5b6878;--line:#dfe4ea;--bg:#f5f3ee;--navy:#173a5e;--red:#b42318;--redbg:#fdecea;--amber:#a15c07;--amberbg:#fef4e2;--green:#1f7a4d;--greenbg:#e8f5ee}
 *{box-sizing:border-box}
@@ -76,26 +76,115 @@ button{font:inherit;cursor:pointer;border-radius:8px}
 /* v: [label, value, normal, flag h|b|ok] */
 const CASES=[
 {
-  title:"The okada crash", setting:"ED, KATH · brought in 1 hour after injury",
-  pc:"Kofi, 28 M, motorbike rider, hit by a car; his <span class='hl'>right leg twisted under the bike</span>. Severe leg pain, <span class='hl'>cannot stand</span>.",
-  exam:["<span class='hl'>Obvious deformity of the right leg</span>, swelling, tenderness, crepitus","<span class='hl'>3 cm wound on the shin with bone end visible</span>, bleeding","Pulses present in the foot, sensation intact","Leg currently dangling off the trolley"],
-  v:[["Heart rate","118/min","60–100","h"],["Blood pressure","96/62","~120/80","b"],["Resp. rate","22/min","12–20","b"],["Hb","11.2 g/dL","13–17","h"]],
-  img:"Not yet done.",
+  title:"The sudden painful lump", setting:"Surgical OPD · Komfo Anokye",
+  pc:"Akosua, 42 F, noticed a <span class='hl'>tender lump in the right breast that appeared over a few days</span>. Worried it is cancer.",
+  exam:["Smooth, round, mobile 2 cm lump","<span class='hl'>Localised tenderness</span>","No skin changes, no axillary nodes"],
+  v:[["Age","42 yrs","Cysts: 35–50","b"],["Onset","Days, painful","Acute enlargement → pain","b"],["Family history","None","Increases risk if present","ok"]],
+  img:"Ultrasound: <span class='hl'>round, anechoic, thin-walled cyst with posterior enhancement</span>. No solid component. <b>Simple cyst</b>.",
   qs:[
-    {q:"How do you classify this fracture?",o:["Closed fracture","Open fracture","Stress fracture","Pathological fracture"],a:1,
-     e:"An <span class='term'>open fracture</span> is one where the <b>fracture haematoma communicates with the skin/external environment</b>. Bone visible through a wound makes it open, with a high risk of infection, including <b>tetanus</b>."},
-    {q:"What is your FIRST priority?",o:["X-ray the leg","Reduce the fracture","ATLS primary survey and resuscitation","Book for internal fixation"],a:2,
-     e:"Treatment starts with <b>ATLS</b>. The <span class='term'>primary survey</span> finds life-threatening injuries first. HR 118 and a low BP suggest <b>haemorrhagic shock</b>. Then the <span class='term'>secondary survey</span> (head to toe). Also: <b>don't leave the limb dangling, splint it</b> (improvise if needed)."},
-    {q:"Which X-ray request is correct?",o:["AP view of the shin only","AP and lateral views, including the joints above and below","Lateral view of the knee only","CT scan only"],a:1,
-     e:"Always take <b>two views (AP + lateral)</b> and <b>include the joint above and below</b> (knee and ankle). Obliques help when the fracture involves metaphyses or joints."},
-    {upd:"X-ray: <b>displaced spiral fracture</b> of the tibia and fibula shafts. (A <span class='term'>spiral</span> pattern comes from a <b>twisting (torsional) force</b>.)",
-     q:"What is the correct order of fracture treatment principles?",o:["Mobilise → reduce → immobilise","Reduce → immobilise → mobilise","Immobilise → mobilise → reduce","Reduce → mobilise → immobilise"],a:1,
-     e:"<b>Reduce</b>: restore <b>length, alignment (angulation and rotation) and contact</b> (only displaced fractures need reducing). <b>Immobilise</b> to prevent re-displacement: cast, brace, traction, external fixation, or internal fixation (e.g. <span class='term'>intramedullary nail</span>). <b>Mobilise</b> early and safely to restore function."},
-    {upd:"8 hours after treatment: <b>pain far worse than expected</b>, not relieved by morphine, <b>worse when the toes are passively stretched</b>, calf tense.",
-     q:"What complication is this?",o:["Malunion","Non-union","Acute compartment syndrome","Fat embolism syndrome"],a:2,
-     e:"<span class='term'>Acute compartment syndrome</span>: rising pressure inside a closed muscle compartment cuts off blood flow. It is an <b>early, limb-threatening emergency</b> that needs urgent surgical release (fasciotomy). <b>Malunion</b> (heals in the wrong position) and <b>non-union</b> (fails to heal) are <b>late</b> complications."}
+    {q:"What is her breast cancer risk from this lesion?",o:["About 23%","No increased risk","Around 10%","Twice the general population"],a:1,
+     e:"A mass that meets ultrasound criteria for a <span class='term'>simple cyst</span> carries <b>no increased cancer risk</b>. Cysts come from the <span class='term'>terminal duct lobular unit</span> (the milk-producing end of the duct)."},
+    {q:"It is painful. Best management?",o:["Excision biopsy","Ultrasound-guided aspiration","Mastectomy","Core biopsy"],a:1,
+     e:"Simple cysts are usually just observed. When symptomatic, <b>aspirate under real-time ultrasound</b>."},
+    {upd:"Aspirate is <b>bloodstained</b>, and the cyst <b>does not fully collapse</b>.",
+     q:"What next?",o:["Discard fluid, reassure","Cytology + culture, then mammography and core needle biopsy","Repeat aspiration in a year","Antibiotics only"],a:1,
+     e:"<span class='term'>Haemorrhagic</span> fluid → send for <b>cytology and culture</b>. A cyst that does not collapse needs <b>further imaging (mammography) and CNB</b> to exclude a solid lesion."}
   ],
-  pearl:"ATLS first, splint early, X-ray the joint above and below. Then reduce, immobilise, mobilise."
+  pearl:"Simple cyst = no added risk. Bloody aspirate or a cyst that won't collapse = investigate further."
+},
+{
+  title:"The cyst with a wall", setting:"Breast imaging clinic",
+  pc:"Efua, 40 F, palpable left breast lump.",
+  exam:["3 cm firm, mobile lump","No nipple discharge"],
+  v:[["Wall / septa","1.2 mm","Benign: thin, < 0.5 mm","h"],["Solid component","Present","Absent in simple cyst","h"],["Posterior enhancement","Absent","Present in simple cyst","h"]],
+  img:"Ultrasound: <span class='hl'>thick septa, mixed cystic and solid components</span>.",
+  qs:[
+    {q:"How is this cyst classified?",o:["Simple","Complicated","Complex","Galactocele"],a:2,
+     e:"A <span class='term'>complex cyst</span> has <b>thick walls/septa > 0.5 mm, cystic + solid parts, and no posterior enhancement</b>. Its malignancy risk ranges from <1% up to 23%."},
+    {q:"Best next step?",o:["Observe for a year","FNA of the cyst fluid","Image-guided core needle biopsy + marker clip","Reassure"],a:2,
+     e:"<b>FNA is not enough</b>: it samples only fluid. The solid part and septa must be sampled by <span class='term'>CNB</span> (core needle biopsy). A metal <span class='term'>marker clip</span> marks the spot for follow-up or excision."},
+    {upd:"CNB reports <b>benign</b> tissue, but the radiologist says the images still look suspicious.",
+     q:"What do you do?",o:["Discharge, as it's benign","Surgical excision with needle localisation","Repeat ultrasound in 2 years","Start tamoxifen"],a:1,
+     e:"Imaging and pathology are <span class='term'>discordant</span> (they don't agree), so <b>excise with needle localisation</b>. If they were concordant and benign, you would follow up with exam + imaging every 6–12 months for 1–2 years."}
+  ],
+  pearl:"Complex cyst → CNB, not FNA. Always check imaging–pathology concordance."
+},
+{
+  title:"The breastfeeding mother", setting:"Postnatal clinic",
+  pc:"Abena, 29 F, breastfeeding her 4-month-old baby. <span class='hl'>Soft, painless lump</span> in the left breast.",
+  exam:["Soft, cystic 3 cm lump","No redness, no fever"],
+  v:[["Lactating","Yes","Key history","b"],["Temperature","36.8 °C","36.5–37.5","ok"]],
+  img:"Ultrasound: complex-looking mass. Mammogram: <span class='hl'>fat–fluid level</span>. Aspiration yields <span class='hl'>milky fluid</span>.",
+  qs:[
+    {q:"Most likely diagnosis?",o:["Breast abscess","Galactocele","Fibroadenoma","Complex cyst with cancer"],a:1,
+     e:"A <span class='term'>galactocele</span> is a <b>milk-retention cyst from a blocked milk duct</b>. The history plus milky aspirate makes the diagnosis. A fat–fluid level on mammography is characteristic."},
+    {q:"Management once diagnosed?",o:["Excision","No excision needed, and no added cancer risk","Mastectomy","Core biopsy every 6 months"],a:1,
+     e:"<b>Excision is not necessary</b>, and there is <b>no increased risk of breast cancer</b>. It is a non-proliferative lesion."}
+  ],
+  pearl:"Lactation + soft lump + milky aspirate = galactocele. Reassure."
+},
+{
+  title:"The 'breast mouse'", setting:"Surgical OPD",
+  pc:"Adwoa, 22 F, university student. <span class='hl'>Painless, firm lump</span> found while bathing.",
+  exam:["2.5 cm smooth, rubbery, <span class='hl'>very mobile</span> lump","No skin or nipple changes, no nodes"],
+  v:[["Age","22 yrs","Fibroadenoma peak: 15–35","b"],["Symptoms","None","",'ok'],["Core biopsy","Simple fibroadenoma","",'ok']],
+  img:"Ultrasound: well-defined, oval, solid lesion.",
+  qs:[
+    {q:"What is the most common benign breast tumour?",o:["Lipoma","Fibroadenoma","Intraductal papilloma","Phyllodes tumour"],a:1,
+     e:"<span class='term'>Fibroadenoma</span> accounts for <b>about half of all breast biopsies</b>. It is likely hormonal: it grows in pregnancy and with oestrogen, and regresses after menopause. 20% are multiple."},
+    {q:"Biopsy-proven, asymptomatic. Best management?",o:["Must be excised","Can be left in place; excision only if she wants it","Mastectomy","Radiotherapy"],a:1,
+     e:"It <b>can be left in place</b>. A patient's request for excision is legitimate, but warn her of the downsides: scarring, dimpling, duct damage and later mammographic changes."},
+    {upd:"Over 4 months the lump <b>grows rapidly to 12 cm</b>, distorting the breast.",
+     q:"What is this and what's the main concern?",o:["Juvenile fibroadenoma, so observe","Giant fibroadenoma, so excise and exclude phyllodes tumour","Breast cyst, so aspirate","Fat necrosis"],a:1,
+     e:"A <span class='term'>giant fibroadenoma</span> is over 10 cm and grows fast. <b>Excise it</b>; the pathologist must distinguish it from a <span class='term'>phyllodes tumour</span>. (Juvenile fibroadenomas, age 10–18, can usually be observed.)"}
+  ],
+  pearl:"Biopsy-proven simple fibroadenoma can stay. Rapid growth or > 10 cm → excise."
+},
+{
+  title:"The bloodstained bra", setting:"Surgical OPD",
+  pc:"Serwaa, 45 F. <span class='hl'>Spontaneous bloody discharge from a single duct</span> of the right nipple for 3 weeks.",
+  exam:["No palpable lump","Pressure at 9 o'clock produces discharge from one duct"],
+  v:[["Discharge","Bloody, single duct","Physiological: bilateral, multi-duct, clear","h"],["Palpable mass","No","",'ok']],
+  img:"Ultrasound: <span class='hl'>small intraductal mass behind the nipple</span>. CNB: intraductal papilloma, <b>no atypia</b>.",
+  qs:[
+    {q:"What is the lesion, and what can it harbour?",o:["Duct ectasia, nothing","Intraductal papilloma, which can harbour atypia or DCIS","Fibroadenoma, which can harbour phyllodes","Cyst, which can harbour infection"],a:1,
+     e:"An <span class='term'>intraductal papilloma</span> is papillary cells growing from a duct/cyst wall into its lumen. It is not concerning itself, but <b>can harbour atypia or DCIS</b> (cancer cells still confined to the duct)."},
+    {q:"Should it be excised?",o:["No, never","Yes, because of the bloody nipple discharge","Only after menopause","Only if bilateral"],a:1,
+     e:"Excision is recommended for <b>atypia, a palpable mass, bloody nipple discharge</b> (mainly symptom relief) or <b>imaging–pathology discordance</b>. Small incidental papillomas without atypia can be followed up."}
+  ],
+  pearl:"Bloody single-duct discharge → think papilloma → excise."
+},
+{
+  title:"The star on the mammogram", setting:"Screening programme",
+  pc:"Yaa, 52 F, asymptomatic, routine screening mammogram.",
+  exam:["Nothing palpable on examination"],
+  v:[["Mammogram","Spiculated mass","Cannot reliably separate from carcinoma","h"],["Core biopsy","Radial scar","",'b']],
+  img:"Mammogram: <span class='hl'>spiculated (star-shaped) lesion</span>.",
+  qs:[
+    {q:"Core biopsy shows a radial scar. What next?",o:["Reassure and discharge","Surgical excision","Annual mammogram only","Chemoprevention"],a:1,
+     e:"A <span class='term'>radial scar</span> (complex sclerosing lesion) can mimic cancer, and <b>8–17% of excised specimens contain malignancy</b>. Excision is generally recommended."},
+    {upd:"A different patient's biopsy shows <b>sclerosing adenosis without atypia</b>.",
+     q:"How should she be managed?",o:["Mastectomy","Chemoprevention + enhanced screening","No specific treatment; excise only for symptoms","Radiotherapy"],a:2,
+     e:"<span class='term'>Sclerosing adenosis</span> is a lobular lesion with extra fibrous tissue. Risk is about <b>2× the general population</b>, but <b>no treatment, chemoprevention or enhanced screening</b> is advised without atypia."}
+  ],
+  pearl:"Radial scar → excise. Sclerosing adenosis without atypia → no special treatment."
+},
+{
+  title:"The calcifications", setting:"Breast MDT meeting",
+  pc:"Mrs Owusu, 48 F, <span class='hl'>clustered microcalcifications</span> on mammogram. Mother had breast cancer.",
+  exam:["No palpable lump"],
+  v:[["Family history","Mother: breast cancer","Increases risk","h"],["Core biopsy","Atypical ductal hyperplasia (ADH)","High-risk lesion","h"]],
+  img:"Stereotactic core biopsy of the calcifications done.",
+  qs:[
+    {q:"Which group does ADH belong to?",o:["Non-proliferative","Proliferative without atypia","Proliferative with atypia (high risk)","Malignant"],a:2,
+     e:"ADH, ALH (atypical lobular hyperplasia) and LCIS (lobular carcinoma in situ) are <b>proliferative lesions with atypia</b>. They are high-risk and raise future cancer risk."},
+    {q:"Standard of care after ADH on core biopsy?",o:["Observe with annual imaging","Chemoprevention only","Excisional biopsy","Reassure"],a:2,
+     e:"<b>Excisional biopsy</b>, because a larger sample <b>upgrades ADH to DCIS or invasive cancer in 10–20%</b>, depending on needle size."},
+    {upd:"Another patient: <b>classic LCIS</b> found incidentally on CNB, imaging concordant, no other high-risk lesion.",
+     q:"Management?",o:["Mastectomy","Observation with risk-based follow-up and MDT input","Wide excision + radiotherapy","Chemotherapy"],a:1,
+     e:"Incidental <b>classic</b> LCIS with concordance has a <b>very low upgrade rate (<3%)</b>, so observe. But <b>pleomorphic or florid LCIS</b> at a margin needs <b>re-excision to negative margins</b>."}
+  ],
+  pearl:"ADH → excise (10–20% upgrade). Classic LCIS/ALH → <3% upgrade, often observe."
 }
 ];
 
@@ -121,7 +210,7 @@ function show(i){
   $('where').textContent=`Case ${i+1} of ${CASES.length}`;
   $('pbar').style.width=((i+1)/CASES.length*100)+'%';
   $('score').textContent=scoreTxt();
-  const vit=c.v.map(x=>`<tr class="${x[3]}"><td>${x[0]}</td><td class="v">${x[1]}</td><td class="n">${x[2]}</td><td><span class="f">${x[3]==='h'?'ABNORMAL':x[3]==='b'?'BORDERLINE':'NORMAL'}</span></td></tr>`).join('');
+  const vit=c.v.map(x=>`<tr class="${x[3]}"><td>${x[0]}</td><td class="v">${x[1]}</td><td class="n">${x[2]}</td><td><span class="f">${x[3]==='h'?'CONCERNING':x[3]==='b'?'NOTE':'REASSURING'}</span></td></tr>`).join('');
   const qs=c.qs.map((q,j)=>`
     <div class="q" id="q${j}">
       ${q.upd?`<div class="update"><b>Update:</b> ${q.upd}</div>`:''}
@@ -136,7 +225,7 @@ function show(i){
       <div id="rep">
         <p>${c.pc}</p>
         <h3>Findings</h3><ul>${c.exam.map(e=>`<li>${e}</li>`).join('')}</ul>
-        <h3>Numbers</h3><table>${vit}</table>
+        <h3>Key findings</h3><table>${vit}</table>
         <h3>Imaging</h3><div class="img">${c.img}</div>
       </div>
       <button class="voice" id="vbtn">🔊 Listen to report</button>
@@ -183,13 +272,13 @@ function showEnd(){
   $('next').style.display='none';
   $('stage').innerHTML=`<div class="card"><div class="end">
     <div class="big">${r} / ${t}</div>
-    <p>Remember for tomorrow:</p>
+    <p>Five things to remember for tomorrow:</p>
     <ul>
-      <li><b>Fracture</b> = break in bone continuity with soft-tissue damage. <b>Open</b> = communicates with the outside.</li>
-      <li><b>Dislocation</b> = total loss of joint contact. <b>Subluxation</b> = partial. Reduce as early as possible.</li>
-      <li>Mechanism: <b>twist → spiral</b>, compression → oblique, tension → transverse.</li>
-      <li>Operate if: can't reduce or hold reduction, pathological fracture, neurovascular compromise, multiple fractures.</li>
-      <li>Complications: early (shock, infection, compartment syndrome, fat embolism) and late (delayed union, malunion, non-union, stiffness).</li>
+      <li><b>Non-proliferative</b> (cysts, galactocele): no cancer risk. <b>Proliferative without atypia</b>: slight risk. <b>With atypia</b> (ADH, ALH, LCIS): high risk.</li>
+      <li><b>Simple cyst</b> → observe or aspirate. <b>Complex cyst</b> → image-guided CNB + clip, not FNA.</li>
+      <li><b>Excise:</b> radial scar, ADH, giant fibroadenoma, papilloma with bloody discharge, any discordant result.</li>
+      <li>Examination alone can't tell benign from malignant. Use the <b>triple assessment</b>: exam + imaging + biopsy.</li>
+      <li>After a benign biopsy: exam + imaging every <b>6 months for 2 years</b>, then routine screening if stable.</li>
     </ul>
     <button class="voice" onclick="location.reload()">↺ Start again</button>
   </div></div>`;
@@ -198,10 +287,10 @@ function showEnd(){
 function speak(btn){
   if(!('speechSynthesis' in window)){alert('Voice-over needs Chrome or Edge.');return;}
   if(speaking){speechSynthesis.cancel();return;}
-  const rows=[...document.querySelectorAll('#rep tr')].map(r=>{const c=[...r.children].map(t=>t.innerText);return `${c[0]}: ${c[1]}, normal ${c[2]}, ${c[3].toLowerCase()}.`;}).join(' ');
+  const rows=[...document.querySelectorAll('#rep tr')].map(r=>{const c=[...r.children].map(t=>t.innerText);return `${c[0]}: ${c[1]}, ${c[2]}, ${c[3].toLowerCase()}.`;}).join(' ');
   const rep=$('rep').cloneNode(true);rep.querySelector('table').remove();
   rep.querySelectorAll('li').forEach(l=>l.textContent=l.textContent+'. ');
-  let t=CASES[cur].title+'. '+rep.innerText.replace('Numbers','Numbers. '+rows).replace(/Findings|Imaging/g,m=>m+'. ');
+  let t=CASES[cur].title+'. '+rep.innerText.replace('Key findings','Key findings. '+rows).replace(/Findings|Imaging/g,m=>m+'. ');
   t=t.replace(/(\d)\/(\d)/g,'$1 over $2').replace(/\/min/g,' per minute').replace(/g\/dL/g,'grams per decilitre').replace(/mmol\/L/g,'millimoles per litre').replace(/U\/L/g,'units per litre').replace(/°C/g,' degrees').replace(/−/g,'minus ').replace(/≥/g,'at least ').replace(/</g,'less than ').replace(/~/g,'about ').replace(/\bSBP\b/g,'systolic').replace(/SpO₂/g,'oxygen saturation');
   const u=new SpeechSynthesisUtterance(t);u.rate=.95;u.lang='en-GB';
   const v=speechSynthesis.getVoices().find(v=>/^en/i.test(v.lang));if(v)u.voice=v;
@@ -215,5 +304,60 @@ $('prev').onclick=()=>show(cur-1);
 $('next').onclick=()=>show(cur+1);
 show(0);
 </script>
+<style>
+#propose{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(circle at 30% 20%,#ffd6e7 0%,#ff9fc4 40%,#e0457b 100%);transition:opacity .8s}
+#propose.hide{opacity:0;pointer-events:none}
+#propose .float{position:absolute;bottom:-60px;font-size:28px;animation:rise linear infinite;opacity:.85;pointer-events:none}
+@keyframes rise{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+#propose .boxp{position:relative;z-index:2;text-align:center;background:rgba(255,255,255,.88);border-radius:22px;padding:34px 30px 30px;
+  max-width:380px;width:88%;box-shadow:0 20px 60px rgba(150,20,70,.35)}
+#propose .ring{font-size:84px;display:inline-block;animation:bob 1.6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.2))}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+#propose h1{font-family:Georgia,serif;font-weight:normal;color:#b0144f;font-size:34px;margin:10px 0 6px}
+#propose p{color:#7a2a48;margin:0 0 20px}
+#propose .yn{display:flex;gap:12px;justify-content:center}
+#propose .yn button{font:inherit;font-size:18px;padding:11px 30px;border-radius:999px;cursor:pointer;border:none}
+#pyes{background:#e0457b;color:#fff;box-shadow:0 6px 16px rgba(224,69,123,.45)}
+#pno{background:#fff;color:#b0144f;border:2px solid #e0457b!important}
+#propose .yn button:hover{transform:scale(1.06)}
+#pmsg{font-size:22px;color:#b0144f;min-height:0}
+.conf{position:fixed;top:-20px;z-index:1000;pointer-events:none;font-size:22px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.sad{font-size:90px;display:inline-block;animation:droop 1.2s ease-in-out infinite}
+@keyframes droop{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(4px)}}
+</style>
+<div id="propose">
+  <div class="boxp" id="pbox">
+    <div class="ring">💍</div>
+    <h1>Will you marry me?</h1>
+    <p>💕 Before the assessment… 💕</p>
+    <div class="yn"><button id="pyes">Yes 💖</button><button id="pno">No</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  const P=document.getElementById('propose'),box=document.getElementById('pbox');
+  const em=['❤️','💖','💕','💗','💘','💝','🌹','✨','💍','🥰'];
+  for(let i=0;i<26;i++){const s=document.createElement('span');s.className='float';s.textContent=em[i%em.length];
+    s.style.left=Math.random()*100+'%';s.style.fontSize=(18+Math.random()*26)+'px';
+    s.style.animationDuration=(6+Math.random()*7)+'s';s.style.animationDelay=(-Math.random()*12)+'s';P.appendChild(s);}
+  function burst(){const c=['🎉','🎊','💖','❤️','✨','💍','🥳','🌹','💕'];
+    for(let i=0;i<90;i++){const s=document.createElement('span');s.className='conf';s.textContent=c[i%c.length];
+      s.style.left=Math.random()*100+'vw';s.style.fontSize=(16+Math.random()*22)+'px';
+      s.style.animationDuration=(2.2+Math.random()*2.5)+'s';s.style.animationDelay=(Math.random()*1.2)+'s';
+      document.body.appendChild(s);setTimeout(()=>s.remove(),6000);}}
+  function close(ms){setTimeout(()=>{P.classList.add('hide');setTimeout(()=>P.remove(),900);},ms);}
+  document.getElementById('pyes').onclick=()=>{
+    box.innerHTML='<div class="ring">💍</div><h1>She said YES! 🥳</h1><p id="pmsg">I love you ❤️<br>Now go ace that assessment! 💪</p>';
+    burst();setTimeout(burst,1200);close(4200);
+  };
+  document.getElementById('pno').onclick=()=>{
+    box.innerHTML='<div class="sad">😢</div><h1>Aww… okay</h1><p id="pmsg">My heart is broken 💔<br>…but let\'s still pass tomorrow.</p>';
+    close(3200);
+  };
+})();
+</script>
+
 </body>
 </html>
